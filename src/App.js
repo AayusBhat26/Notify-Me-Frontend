@@ -12,14 +12,16 @@ function App() {
   const [remindersList, setRemindersList] = useState([]);
 
   useEffect(()=>{
-    axios.get("http://localhost:3002/getAllReminders").then(res =>{
-      setRemindersList(res.data)
-    })
+    axios
+      .get("https://notify-me-backend-main.onrender.com/getAllReminders")
+      .then((res) => {
+        setRemindersList(res.data);
+      });
   }, [])
 
   const addReminder = ()=>{
     axios
-      .post("http://localhost:3002/addNewReminder", {
+      .post("https://notify-me-backend-main.onrender.com/addNewReminder", {
         // sending two objects in body of request.
         phoneNumber,
         reminderMessage,
@@ -36,7 +38,7 @@ function App() {
 
   const deleteReminder = (id)=>{
    axios
-     .post("http://localhost:3002/deleteReminder", {
+     .post("https://notify-me-backend-main.onrender.com/deleteReminder", {
        id
      })
      .then((res) => {
